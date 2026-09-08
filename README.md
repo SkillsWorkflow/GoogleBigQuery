@@ -72,7 +72,7 @@ chmod +x scripts/deploy.sh scripts/grant_report_access.sh
 
 PROJECT_ID="your-google-cloud-project" \
 CREDENTIALS_FILE="/absolute/path/to/credentials.json" \
-BQ_DATASET="skills_workflow_agency" \
+BQ_DATASET="skills_workflow" \
 REGION="europe-west1" \
 BQ_LOCATION="EU" \
 ./scripts/deploy.sh
@@ -108,7 +108,7 @@ select
   row_count,
   finished_at,
   error_message
-from `your-google-cloud-project.skills_workflow_agency._sw_sync_runs`
+from `your-google-cloud-project.skills_workflow._sw_sync_runs`
 order by finished_at desc
 ```
 
