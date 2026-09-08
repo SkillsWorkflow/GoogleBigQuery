@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 import pytest
 
@@ -40,3 +41,14 @@ def test_query_overrides_can_add_custom_query(tmp_path):
     queries = load_queries(str(path), '{"Agency-Custom":{"refresh_minutes":15}}')
     assert [query.name for query in queries] == ["DE-Projects", "Agency-Custom"]
     assert queries[1].refresh_minutes == 15
+
+
+def test_packaged_catalog_excludes_count_queries_and_uses_expense_types():
+    catalog_path = Path(__file__).parents[1] / "config" / "queries.json"
+    queries = load_queries(str(catalog_path))
+    names = [query.name for query in queries]
+
+    assert len(names) == 60
+    assert not any(name.startswith("DE-") and name.endswith("Count") for name in names)
+    assert "DE-ExpenseTypes" in names
+    assert "DE-ExpenseType" not in names

@@ -22,7 +22,7 @@ BigQuery dataset
 Looker Studio native BigQuery data source
 ```
 
-The catalog contains 69 documented `DE-*` queries plus `EstimatedPlannedActualMonthly`. The scheduler starts the loader hourly, but the per-query `refresh_minutes` setting determines whether a query is due. Operational queries default to hourly, other transactional queries to every four hours, and reference data to daily.
+The catalog contains 59 supported `DE-*` queries plus `EstimatedPlannedActualMonthly`. `DE-*` count endpoints are intentionally excluded, and the expense-type endpoint is named `DE-ExpenseTypes`. The scheduler starts the loader hourly, but the per-query `refresh_minutes` setting determines whether a query is due. Operational queries default to hourly, other transactional queries to every four hours, and reference data to daily.
 
 ## Data behavior
 
